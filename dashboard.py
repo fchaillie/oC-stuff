@@ -3,19 +3,7 @@ import streamlit as st
 import requests
 import mlflow
 import json
-from lime import lime_tabular
 
-def request_prediction(model_uri, data):
-
-    data_json = {'data': data}
-    
-    response = requests.request(method = 'POST', url = model_uri, json = data_json)
-
-    if response.status_code != 200:
-        raise Exception(
-            "Request failed with status {}, {}".format(response.status_code, response.text))
-
-    return response.json()
 
 
 def main():
@@ -61,10 +49,7 @@ def main():
     
     if predict_btn:
         
-        # Your list of values
-#         # data_list = [EXT_SOURCE_1, EXT_SOURCE_2, EXT_SOURCE_3, PAYMENT_RATE, DAYS_BIRTH, DAYS_EMPLOYED,
-#                      DAYS_EMPLOYED_PERC, DAYS_REGISTRATION, DAYS_ID_PUBLISH, AMT_ANNUITY, ANNUITY_INCOME_PERC,
-#                      INSTAL_DBD_MEAN, REGION_POPULATION_RELATIVE]
+   
         
         dictio_pred = {'EXT_SOURCE_1': EXT_SOURCE_1, 'EXT_SOURCE_2': EXT_SOURCE_2, 'EXT_SOURCE_3': EXT_SOURCE_3, 
                        'PAYMENT_RATE': PAYMENT_RATE, 'DAYS_BIRTH': DAYS_BIRTH, 'DAYS_EMPLOYED': DAYS_EMPLOYED,
@@ -76,30 +61,35 @@ def main():
         PRED_API_URL = "http://127.0.0.1:5000/prediction/"
         response = requests.get(PRED_API_URL, params = dictio_pred)
         content = json.loads(response.content.decode('utf-8'))
-        
-
-        predictions = content[0]
+        content = float(content[0])
     
-        if predictions > 0.15:
+        if content > 0.15:
             answer = "No loan for you angel"
         else:
             answer = "Loan for you angel"
-        
-#         # Création de l'explainer
-#         explainer = lime_tabular.LimeTabularExplainer(df.values, 
-#                                                       feature_names = column_names, 
-#                                                       class_names = ['0','1'], 
-#                                                       verbose = True, 
-#                                                       mode = 'classification')
-
-#         # Choisissez un exemple spécifique à expliquer
-#         exp = explainer.explain_instance(np.array(data_list), loaded_model.predict, num_features = 5 )
-#         # Afficher l'explication
-#         html_output = exp.show_in_notebook(show_table=True, predict_proba=True)._repr_html_()
             
         st.write(answer)
         
-#         st.write(html_output, unsafe_allow_html=True)
+        PERS_FEAT_API_URL = "http://127.0.0.1:5000/personalfeatures/"
+        response = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
+        content = json.loads(response.content.decode('utf-8'))
+        content = float(content[0])
+    
+        if content > 0.15:
+            answer = "No loan for you angel"
+        else:
+            answer = "Loan for you angel"
+            
+        st.write(answer)
+        
+
+        
+        
+        
+            
+        
+        
+        st.write(html_output, unsafe_allow_html=True)
 
 
 if __name__ == '__main__':
