@@ -10,8 +10,6 @@ import pickle
 def main():
     
     
-
-    
     st.title('You will get your loan or not, cano ?')
 
     EXT_SOURCE_1 = st.number_input('EXT_SOURCE_1', min_value = 0., max_value = 1.)
@@ -71,7 +69,7 @@ def main():
             
 #         st.write(answer)
         
-        PERS_FEAT_API_URL = "http://127.0.0.1:5000/personalfeatures/"
+        PERS_FEAT_API_URL = "https://quiet-forest-93472-867d6785cc21.herokuapp.com/"
         response = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
         #content = json.loads(response.content.decode('utf-8'))
 #         content = float(content[0])
@@ -82,7 +80,7 @@ def main():
 #             answer = "Loan for you angel"
         #
         exp = pickle.loads(response.content)
-        my_html = f"<script>{exp.as_html()}</script>"
+#        my_html = f"<script>{exp.as_html()}</script>"
         html(exp.as_html(), width = 1000, height = 800, scrolling = True)
         
 
