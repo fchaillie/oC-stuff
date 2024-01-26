@@ -28,7 +28,7 @@ def askpersonalfeatures():
     
    # load the model from disk
     filename = 'finalized_model.sav'
-    loaded_model = pickle.load(open(filename, 'rb'))
+    loaded_model = pickle.load(open(filename, 'rb'),encoding='latin1')
 
 #     MLFLOW_URI = 'http://127.0.0.1:7500'
 #     mlflow.set_tracking_uri(uri = MLFLOW_URI) 
