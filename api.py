@@ -50,7 +50,7 @@ def askpersonalfeatures():
     
     
     exp = explainer.explain_instance(df.values[0],loaded_model.predict_proba, num_features = 12)  
-        
+    print(df.values[0])    
     return pickle.dumps(exp)
 
 if __name__ == "__main__":
