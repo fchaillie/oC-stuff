@@ -11,7 +11,7 @@ import pickle
 app = Flask(__name__)
     
 
-@app.route("/prediction")
+@app.route("/prediction/")
 def askpersonalfeatures():
     
     
@@ -53,7 +53,8 @@ def askpersonalfeatures():
 #     exp = explainer.explain_instance(train_df.values[0],loaded_model.predict_proba, num_features = 12)  
 #     train_df.values[0]    
 #     # return pickle.dumps(exp)
-    return print("Hello world")
+      print("Hello world")
+#    return print("Hello world")
     
 if __name__ == "__main__":
     app.run(debug=True)
