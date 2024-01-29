@@ -11,7 +11,7 @@ import pickle
 app = Flask(__name__)
     
 
-@app.route("https://quiet-forest-93472-867d6785cc21.herokuapp.com/personal_features/")
+@app.route("/personal_features")
 def askpersonalfeatures():
     
     
