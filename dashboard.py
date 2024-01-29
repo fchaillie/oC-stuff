@@ -70,7 +70,7 @@ def main():
             
 #         st.write(answer)
         
-        PERS_FEAT_API_URL = "https://quiet-forest-93472-867d6785cc21.herokuapp.com/"
+        PERS_FEAT_API_URL = "https://quiet-forest-93472-867d6785cc21.herokuapp.com/personal_features/"
         response = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
         #content = json.loads(response.content.decode('utf-8'))
 #         content = float(content[0])

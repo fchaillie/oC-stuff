@@ -11,7 +11,7 @@ import pickle
 app = Flask(__name__)
     
 
-@app.route('/')
+@app.route('/personal_features/')
 def askpersonalfeatures():
     
     
