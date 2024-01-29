@@ -5,6 +5,7 @@ import requests
 import mlflow
 import json
 import pickle
+import gzip
 
 
 def main():
@@ -79,7 +80,9 @@ def main():
 #         else:
 #             answer = "Loan for you angel"
         #
-        exp = pickle.loads(response.content,encoding='latin1')
+        with gzip.open(response.content, 'rb') as ifp:
+        exp = pickle.loads(ifp)
+        # exp = pickle.loads(response.content)
 #        my_html = f"<script>{exp.as_html()}</script>"
         html(exp.as_html(), width = 1000, height = 800, scrolling = True)
         
