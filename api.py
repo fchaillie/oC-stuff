@@ -20,6 +20,7 @@ def askpersonalfeatures():
              "DAYS_EMPLOYED_PERC", "DAYS_REGISTRATION", "DAYS_ID_PUBLISH", "AMT_ANNUITY", "ANNUITY_INCOME_PERC",
              "INSTAL_DBD_MEAN", "REGION_POPULATION_RELATIVE"]
     train_df = train_df[feats]
+    train_df.values[0]
     
 #     args = request.args
 #     df = pd.DataFrame([args])
@@ -29,7 +30,7 @@ def askpersonalfeatures():
    # load the model from disk
     filename = 'finalized_model.sav'
     loaded_model = pickle.load(open(filename, 'rb'))
-
+    train_df.values[0]
 #     MLFLOW_URI = 'http://127.0.0.1:7500'
 #     mlflow.set_tracking_uri(uri = MLFLOW_URI) 
 #     logged_model = 'runs:/4af57f379fb148da9a95085ec4621d9b/credit_default_model-2' 
@@ -48,11 +49,11 @@ def askpersonalfeatures():
                                                   mode = 'classification',
                                                   discretize_continuous=False)
     
-    
+    train_df.values[0]
     exp = explainer.explain_instance(train_df.values[0],loaded_model.predict_proba, num_features = 12)  
-        
+    train_df.values[0]    
     # return pickle.dumps(exp)
     return list(train_df.values[0])
-
+    train_df.values[0]
 if __name__ == "__main__":
     app.run(debug=True)
