@@ -11,7 +11,7 @@ import pickle
 app = Flask(__name__)
     
 
-@app.route("/personal_features")
+@app.route("/personal_features/")
 def askpersonalfeatures():
     
     
@@ -21,10 +21,10 @@ def askpersonalfeatures():
              "INSTAL_DBD_MEAN", "REGION_POPULATION_RELATIVE"]
     train_df = train_df[feats]
     
-    args = request.args
-    df = pd.DataFrame([args])
-    # Convert all columns to floats
-    df = df.map(lambda x: pd.to_numeric(x, errors='coerce'))
+#     args = request.args
+#     df = pd.DataFrame([args])
+#     # Convert all columns to floats
+#     df = df.map(lambda x: pd.to_numeric(x, errors='coerce'))
     
    # load the model from disk
     filename = 'finalized_model.sav'
@@ -49,9 +49,10 @@ def askpersonalfeatures():
                                                   discretize_continuous=False)
     
     
-    exp = explainer.explain_instance(df.values[0],loaded_model.predict_proba, num_features = 12)  
-    print(df.values[0])    
-    return pickle.dumps(exp)
+    exp = explainer.explain_instance(train_df.values[0],loaded_model.predict_proba, num_features = 12)  
+    print(train_df.values[0])    
+    # return pickle.dumps(exp)
+    return list(train_df.values[0])
 
 if __name__ == "__main__":
     app.run(debug=True)
