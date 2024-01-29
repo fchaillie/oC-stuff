@@ -85,7 +85,7 @@ def main():
         # exp = pickle.loads(response.content)
 #        my_html = f"<script>{exp.as_html()}</script>"
         #html(exp.as_html(), width = 1000, height = 800, scrolling = True)
-        print(response)
+        print(response.content)
 
 
 
