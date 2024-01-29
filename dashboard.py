@@ -82,10 +82,10 @@ def main():
         #
         # with gzip.open(response.content, 'rb') as ifp:
         #    exp = pickle.loads(ifp)
-        exp = pickle.loads(response.content)
+        # exp = pickle.loads(response.content)
 #        my_html = f"<script>{exp.as_html()}</script>"
         #html(exp.as_html(), width = 1000, height = 800, scrolling = True)
-        print(exp)
+        print(response)
 
 
 
