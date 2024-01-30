@@ -9,7 +9,11 @@ from lime import lime_tabular
 import pickle
 
 app = Flask(__name__)
-    
+
+
+@app.route("/")
+def helloworld():
+    return "Hello world"
 
 @app.route("/prediction/")
 def askpersonalfeatures():
