@@ -70,7 +70,7 @@ def main():
             
 #         st.write(answer)
         
-        PERS_FEAT_API_URL = "https://quiet-forest-93472-867d6785cc21.herokuapp.com/personal_features/"
+        PERS_FEAT_API_URL = "https://quiet-forest-93472-867d6785cc21.herokuapp.com/prediction/"
         response = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
         #content = json.loads(response.content.decode('utf-8'))
 #         content = float(content[0])
@@ -82,10 +82,10 @@ def main():
         #
         # with gzip.open(response.content, 'rb') as ifp:
         #    exp = pickle.loads(ifp)
-        # exp = pickle.loads(response.content)
+        exp = pickle.loads(response.content)
 #        my_html = f"<script>{exp.as_html()}</script>"
-        #html(exp.as_html(), width = 1000, height = 800, scrolling = True)
-        st.write(response)
+        html(exp.as_html(), width = 1000, height = 800, scrolling = True)
+        #st.write(response)
 
 
 
