@@ -15,6 +15,10 @@ app = Flask(__name__)
 def helloworld():
     return "Hello world"
 
+@app.route("/test/")
+def test():
+    return "Test"
+
 @app.route("/prediction/")
 def askpersonalfeatures():
     
