@@ -60,7 +60,7 @@ def main():
          
 
         
-        PERS_FEAT_API_URL = "https://quiet-forest-93472-867d6785cc21.herokuapp.com/prediction/"
+        PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/prediction/"
         response = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
      
         exp = pickle.loads(response.content)
