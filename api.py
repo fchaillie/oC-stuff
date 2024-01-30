@@ -11,10 +11,6 @@ import pickle
 app = Flask(__name__)
 
 
-@app.route("/")
-def helloworld():
-    return "Hello world"
-
 @app.route("/test/")
 def test():
     return "Test"
