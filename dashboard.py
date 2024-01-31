@@ -58,16 +58,17 @@ def main():
                        'ANNUITY_INCOME_PERC': ANNUITY_INCOME_PERC,'INSTAL_DBD_MEAN': INSTAL_DBD_MEAN, 
                        'REGION_POPULATION_RELATIVE': REGION_POPULATION_RELATIVE}
          
-        PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/score/"
+        PERS_FEAT_API_URL = "http://127.0.0.1:5000/score/"
         response = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
-        st.write(response.content)
+        st.write(float(response.content))
         
-        PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/prediction/"
-        response = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
+        
+        PERS_FEAT_API_URL = "http://127.0.0.1:5000/prediction/"
+        response1 = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
      
-        exp = pickle.loads(response.content)
+        exp1 = pickle.loads(response1.content)
 
-        html(exp.as_html(), width = 1000, height = 800, scrolling = True)
+        html(exp1.as_html(), width = 1000, height = 800, scrolling = True)
 
 
 
