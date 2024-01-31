@@ -5,12 +5,11 @@ import requests
 import mlflow
 import json
 import pickle
+import gzip
 
 
 def main():
     
-    
-
     
     st.title('You will get your loan or not, cano ?')
 
@@ -59,32 +58,17 @@ def main():
                        'ANNUITY_INCOME_PERC': ANNUITY_INCOME_PERC,'INSTAL_DBD_MEAN': INSTAL_DBD_MEAN, 
                        'REGION_POPULATION_RELATIVE': REGION_POPULATION_RELATIVE}
         
-#         PRED_API_URL = "http://127.0.0.1:5000/prediction/"
-#         response = requests.get(PRED_API_URL, params = dictio_pred)
-#         content = json.loads(response.content.decode('utf-8'))
-#         content = float(content[0])
-    
-#         if content > 0.15:
-#             answer = "No loan for you angel"
-#         else:
-#             answer = "Loan for you angel"
-            
-#         st.write(answer)
-        
-        PERS_FEAT_API_URL = "http://127.0.0.1:5000/personalfeatures/"
+        PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/score/"
         response = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
-        #content = json.loads(response.content.decode('utf-8'))
-#         content = float(content[0])
-    
-#         if content > 0.15:
-#             answer = "No loan for you angel"
-#         else:
-#             answer = "Loan for you angel"
-        #
-        exp = pickle.loads(response.content)
-        my_html = f"<script>{exp.as_html()}</script>"
-        html(exp.as_html(), width = 1000, height = 800, scrolling = True)
+        st.write(response)
+
         
+        PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/prediction/"
+        response = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
+     
+        exp = pickle.loads(response.content)
+
+        html(exp.as_html(), width = 1000, height = 800, scrolling = True)
 
 
 
