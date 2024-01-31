@@ -60,7 +60,7 @@ def main():
          
         PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/score/"
         response = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
-        st.write(response)
+        st.write(response.content)
         
         PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/prediction/"
         response = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
