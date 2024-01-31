@@ -70,6 +70,10 @@ def main():
 
         html(exp1.as_html(), width = 1000, height = 800, scrolling = True)
 
+        PERS_FEAT_API_URL = "http://127.0.0.1:5000/valeur_moyenne/"
+        response2 = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
+     
+        st.table(response2)
 
 
 if __name__ == '__main__':
