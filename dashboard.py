@@ -11,8 +11,10 @@ import gzip
 def main():
     
     
-    st.title('You will get your loan or not, cano ?')
-
+    # st.title('')
+    st.markdown("<h1 style='text-align: center; black: red;'>Loan Details</h1>", unsafe_allow_html=True)
+    st.text("")
+    
     EXT_SOURCE_1 = st.number_input('EXT_SOURCE_1', min_value = 0., max_value = 1.)
 
     EXT_SOURCE_2 = st.number_input('EXT_SOURCE_2', min_value = 0., max_value = 1.)
@@ -40,7 +42,7 @@ def main():
     REGION_POPULATION_RELATIVE = st.number_input('REGION_POPULATION_RELATIVE', min_value = 0., max_value = 1.)
     
 
-    predict_btn = st.button('Prédire')
+    predict_btn = st.button('Prediction')
     
     pred = None
     answer = None
@@ -60,17 +62,22 @@ def main():
          
         PERS_FEAT_API_URL = "http://127.0.0.1:5000/score/"
         response = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
+        st.title('Answer')
+        st.text("")
+        
         if float(response.content) > 0.15:
-            st.write("Vous ne pouvez accorder de prêt à ce client car son risque de défaut est supérieur à 15%")
+            st.write("You can not grant a loan to this client because their default risk is above 15%")
         else: 
-            st.write("Vous pouvez accorder un prêt à ce client car son risque de défaut est inférieur à 15%")
+            st.write("You can grant a loan to this client because their default risk is below 15%")
         
         
         
         PERS_FEAT_API_URL = "http://127.0.0.1:5000/prediction/"
         response1 = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
         exp1 = pickle.loads(response1.content)
-        html(exp1.as_html(), width = 1000, height = 800, scrolling = True)
+        st.title('Personal features for this client')
+        st.text("")
+        html(exp1.as_html(), width = 1000, height = 250, scrolling = True)
         
         
 
@@ -79,6 +86,8 @@ def main():
         data = response2.json()
         data_json_str = json.dumps(data)  # Convert the dictionary to a JSON string
         resume_deserialized = pd.read_json(data_json_str, orient='split')
+        st.title('Comparison with other clients')
+        st.text("")
         st.write(resume_deserialized)
 
 
