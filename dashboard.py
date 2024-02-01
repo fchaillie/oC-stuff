@@ -60,20 +60,26 @@ def main():
          
         PERS_FEAT_API_URL = "http://127.0.0.1:5000/score/"
         response = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
-        st.write(float(response.content))
+        if float(response.content) > 0.15:
+            st.write("Vous ne pouvez accorder de prêt à ce client car son risque de défaut est supérieur à 15%")
+        else: 
+            st.write("Vous pouvez accorder un prêt à ce client car son risque de défaut est inférieur à 15%")
+        
         
         
         PERS_FEAT_API_URL = "http://127.0.0.1:5000/prediction/"
         response1 = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
-     
         exp1 = pickle.loads(response1.content)
-
         html(exp1.as_html(), width = 1000, height = 800, scrolling = True)
+        
+        
 
         PERS_FEAT_API_URL = "http://127.0.0.1:5000/valeur_moyenne/"
         response2 = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
-     
-        st.table(response2)
+        data = response2.json()
+        data_json_str = json.dumps(data)  # Convert the dictionary to a JSON string
+        resume_deserialized = pd.read_json(data_json_str, orient='split')
+        st.write(resume_deserialized)
 
 
 if __name__ == '__main__':
