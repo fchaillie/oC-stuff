@@ -89,7 +89,7 @@ def main():
         st.title('Comparison with other clients')
         st.text("")
         st.write(resume_deserialized)
-        st.text("")
+        
 
 if __name__ == '__main__':
     main()
