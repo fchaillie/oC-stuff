@@ -53,7 +53,7 @@ def main():
                        'ANNUITY_INCOME_PERC': ANNUITY_INCOME_PERC,'INSTAL_DBD_MEAN': INSTAL_DBD_MEAN, 
                        'REGION_POPULATION_RELATIVE': REGION_POPULATION_RELATIVE}
          
-        PERS_FEAT_API_URL = "http://127.0.0.1:5000/score/"
+        PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/score/"
         response = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
         st.title('Answer')
         st.text("")
@@ -65,7 +65,7 @@ def main():
         
         
         
-        PERS_FEAT_API_URL = "http://127.0.0.1:5000/prediction/"
+        PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/prediction/"
         response1 = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
         exp1 = pickle.loads(response1.content)
         st.title('Personal features for this client')
@@ -74,7 +74,7 @@ def main():
         
         
 
-        PERS_FEAT_API_URL = "http://127.0.0.1:5000/valeur_moyenne/"
+        PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/valeur_moyenne/"
         response2 = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
         data = response2.json()
         data_json_str = json.dumps(data)  # Convert the dictionary to a JSON string
