@@ -58,10 +58,10 @@ def main():
         st.title('Answer')
         st.text("")
         
-        if float(response.content) > 0.15:
-            st.write("You can not grant a loan to this client because their default risk is above 15%")
+        if float(response.content) > 0.20:
+            st.write("You can not grant a loan to this client because their default risk is above 20%")
         else: 
-            st.write("You can grant a loan to this client because their default risk is below 15%")
+            st.write("You can grant a loan to this client because their default risk is below 20%")
         
         
         
