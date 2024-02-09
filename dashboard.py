@@ -21,7 +21,7 @@ def main():
 
     EXT_SOURCE_3 = st.number_input('External data source 3 score', min_value = 0., max_value = 1.)
 
-    PAYMENT_RATE = st.number_input('Payment rate', min_value = 0., max_value = 1.)
+    PAYMENT_RATE = st.number_input('Annual payment rate', min_value = 0., max_value = 1.)
 
     DAYS_BIRTH = int(st.number_input('How old is the client ?', max_value = 0., step = 1.))
 
