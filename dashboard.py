@@ -10,7 +10,7 @@ import gzip
 
 def main():
     
-    # comment
+    
     # st.title('')
     st.markdown("<h1 style='text-align: center; black: red;'>Loan Details</h1>", unsafe_allow_html=True)
     st.text("")
