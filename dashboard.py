@@ -34,8 +34,8 @@ def main():
     DAYS_REGISTRATION = st.number_input('How many days before the application did client change his registration ?',
                                        max_value = 0., step = 1.)
     
-    DAYS_ID_PUBLISH = int(st.number_input(f'How many days before the application did client change the identity'
-                                          f'document with which he applied for the loan', 
+    DAYS_ID_PUBLISH = int(st.number_input(f'How many days before the application did client change the identity '
+                                          f'document with which he applied for the loan ?', 
                                           max_value = 0., step = 1.))
     
     AMT_ANNUITY = st.number_input('Loan annuity', min_value = 0., step = 1.)
@@ -43,7 +43,7 @@ def main():
     ANNUITY_INCOME_PERC = st.number_input('What percentage of the monthly salary does the annuity represents ?',
                                          min_value = 0., max_value = 1.)
     
-    INSTAL_DBD_MEAN = st.number_input(f'How many days before the due date for each instalment on average does'
+    INSTAL_DBD_MEAN = st.number_input(f'How many days before the due date for each instalment on average does '
                                      f'the client usually pay it ?',
                                      min_value = 0., step = 1.)
     
