@@ -10,7 +10,7 @@ import base64
 
 def main():
     
-    # Définition de tous les boutons
+    # Defining the buttons
 
     st.markdown("<h1 style='text-align: center; black: red;'>Loan Details</h1>", unsafe_allow_html=True)
 
@@ -51,7 +51,8 @@ def main():
     REGION_POPULATION_RELATIVE = st.number_input('How populated is the region where the client lives ?',
                                                 min_value = 0., max_value = 1.)
     
-    # Bouton Prédiction avec les actions enclenchés
+
+    # Prediction button definition with the actions that will take place
 
     predict_btn = st.button('Prediction')
   
@@ -64,12 +65,13 @@ def main():
                        'ANNUITY_INCOME_PERC': ANNUITY_INCOME_PERC,'INSTAL_DBD_MEAN': INSTAL_DBD_MEAN, 
                        'REGION_POPULATION_RELATIVE': REGION_POPULATION_RELATIVE}
         
-        # On va chercher dans l'API la prédiction 
+        # We are getting from the API the prediction score 
         PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/score/"
         response = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
         st.title('Answer')
         st.text("")
         
+        # The decisiosn for the loan will depends if the prediction score is above the threshold decided
         if float(response.content) > 0.20:
             
             text = "You can not grant a loan to this client because their default risk is above 20%"
@@ -81,7 +83,7 @@ def main():
             st.markdown(f'<div style="background-color:#FF6347;padding:10px;border-radius:5px;'
                         f'color:white;">{text}</div>',unsafe_allow_html=True)
         
-        # On va chercher dans l'API les features qui ont influencé le plus la prédiction pour ce client
+        # We are getting from the API the personal features that made the prediction score for that client
         PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/prediction/"
         response1 = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
         exp1 = pickle.loads(response1.content)
@@ -90,7 +92,7 @@ def main():
         html(exp1.as_html(), width = 1000, height = 250, scrolling = True)
         
         
-        # On va chercher dans l'API la tableau comparateur entre le client et les 2 groupe de clients (bons et mauvais)
+        # We are getting the table made to compare the client with the 2 groups of customers
         PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/valeur_moyenne/"
         response2 = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
         data = response2.json()
