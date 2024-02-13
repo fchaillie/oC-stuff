@@ -10,6 +10,7 @@ import base64
 
 def main():
     
+    # Définition de tous les boutons
 
     st.markdown("<h1 style='text-align: center; black: red;'>Loan Details</h1>", unsafe_allow_html=True)
 
@@ -50,6 +51,7 @@ def main():
     REGION_POPULATION_RELATIVE = st.number_input('How populated is the region where the client lives ?',
                                                 min_value = 0., max_value = 1.)
     
+    # Bouton Prédiction avec les actions enclenchés
 
     predict_btn = st.button('Prediction')
   
@@ -61,7 +63,8 @@ def main():
                        'DAYS_ID_PUBLISH': DAYS_ID_PUBLISH,'AMT_ANNUITY': AMT_ANNUITY, 
                        'ANNUITY_INCOME_PERC': ANNUITY_INCOME_PERC,'INSTAL_DBD_MEAN': INSTAL_DBD_MEAN, 
                        'REGION_POPULATION_RELATIVE': REGION_POPULATION_RELATIVE}
-         
+        
+        # On va chercher dans l'API la prédiction 
         PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/score/"
         response = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
         st.title('Answer')
@@ -77,7 +80,8 @@ def main():
             text = "You can not grant a loan to this client because their default risk is above 20%"
             st.markdown(f'<div style="background-color:#FF6347;padding:10px;border-radius:5px;'
                         f'color:white;">{text}</div>',unsafe_allow_html=True)
-
+        
+        # On va chercher dans l'API les features qui ont influencé le plus la prédiction pour ce client
         PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/prediction/"
         response1 = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
         exp1 = pickle.loads(response1.content)
@@ -86,7 +90,7 @@ def main():
         html(exp1.as_html(), width = 1000, height = 250, scrolling = True)
         
         
-
+        # On va chercher dans l'API la tableau comparateur entre le client et les 2 groupe de clients (bons et mauvais)
         PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/valeur_moyenne/"
         response2 = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
         data = response2.json()
