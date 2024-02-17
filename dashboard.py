@@ -16,40 +16,40 @@ def main():
 
     st.text("")
     
-    EXT_SOURCE_1 = st.number_input('External data source 1 score', min_value = 0., max_value = 1.)
+    EXT_SOURCE_1 = st.number_input('External data source 1 score [1-100]', min_value = 0., max_value = 100., step = 1.) / 100
 
-    EXT_SOURCE_2 = st.number_input('External data source 2 score', min_value = 0., max_value = 1.)
+    EXT_SOURCE_2 = st.number_input('External data source 2 score [1-100]', min_value = 0., max_value = 100., step = 1.) / 100
 
-    EXT_SOURCE_3 = st.number_input('External data source 3 score', min_value = 0., max_value = 1.)
+    EXT_SOURCE_3 = st.number_input('External data source 3 score [1-100]', min_value = 0., max_value = 100., step = 1.) / 100
 
-    PAYMENT_RATE = st.number_input('Annual payment rate', min_value = 0., max_value = 1.)
+    PAYMENT_RATE = st.number_input('Annual payment rate: [1-100]', min_value = 0., max_value = 100., step = 1.) / 100
 
-    DAYS_BIRTH = int(st.number_input('How old is the client ?', max_value = 0., step = 1.))
+    DAYS_BIRTH = int(st.number_input('How old is the client ?', min_value = 0., max_value = 150., step = 1.) * (-365))
 
     DAYS_EMPLOYED = st.number_input('How many days before the application the person started current employment ?',
-                                   max_value = 0., step = 1.)
+                                   min_value = 0., max_value = 1000000., step = 1.) * (-1)
 
-    DAYS_EMPLOYED_PERC = st.number_input('What percentage of his lifetime does the time working at the current job represents ?',
-                                        min_value = 0., max_value = 1.)
+    DAYS_EMPLOYED_PERC = st.number_input('What percentage of his lifetime does the time working at the current job represents ? [1-100]',
+                                        min_value = 0., max_value = 100., step = 1.) / 100
 
     DAYS_REGISTRATION = st.number_input('How many days before the application did client change his registration ?',
-                                       max_value = 0., step = 1.)
+                                       min_value = 0., max_value = 1000000., step = 1.) * (-1)
     
     DAYS_ID_PUBLISH = int(st.number_input(f'How many days before the application did client change the identity '
                                           f'document with which he applied for the loan ?', 
-                                          max_value = 0., step = 1.))
+                                          min_value = 0., max_value = 1000000., step = 1.) * (-1))
     
     AMT_ANNUITY = st.number_input('Loan annuity', min_value = 0., step = 1.)
     
-    ANNUITY_INCOME_PERC = st.number_input('What percentage of the monthly salary does the annuity represents ?',
-                                         min_value = 0., max_value = 1.)
+    ANNUITY_INCOME_PERC = st.number_input('What percentage of the yearly salary does the annuity represents ? [1-100]',
+                                         min_value = 0., max_value = 100., step = 1.) / 100
     
     INSTAL_DBD_MEAN = st.number_input(f'How many days before the due date for each instalment on average does '
                                      f'the client usually pay it ?',
                                      min_value = 0., step = 1.)
     
-    REGION_POPULATION_RELATIVE = st.number_input('How populated is the region where the client lives ?',
-                                                min_value = 0., max_value = 1.)
+    REGION_POPULATION_RELATIVE = st.number_input('How populated is the region where the client lives ? [1-7]',
+                                                min_value = 1., max_value = 7., step = 1.) / 100
     
 
     # Prediction button definition with the actions that will take place
@@ -67,6 +67,7 @@ def main():
         
         # We are getting from the API the prediction score 
         PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/score/"
+        # PERS_FEAT_API_URL = "http://127.0.0.1:5000/score/"
         response = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
         st.title('Answer')
         st.text("")
@@ -75,16 +76,17 @@ def main():
         if float(response.content) > 0.20:
             
             text = "You can not grant a loan to this client because their default risk is above 20%"
-            st.markdown(f'<div style="background-color:#4CAF50;padding:10px;border-radius:5px;'
+            st.markdown(f'<div style="background-color:#FF6347;padding:10px;border-radius:5px;'
                         f'color:white;">{text}</div>',unsafe_allow_html=True)
         else:
             
-            text = "You can not grant a loan to this client because their default risk is above 20%"
-            st.markdown(f'<div style="background-color:#FF6347;padding:10px;border-radius:5px;'
+            text = "You can grant a loan to this client because their default risk is below 20%"
+            st.markdown(f'<div style="background-color:#4CAF50;padding:10px;border-radius:5px;'
                         f'color:white;">{text}</div>',unsafe_allow_html=True)
         
         # We are getting from the API the personal features that made the prediction score for that client
         PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/prediction/"
+        # PERS_FEAT_API_URL = "http://127.0.0.1:5000/prediction/"
         response1 = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
         exp1 = pickle.loads(response1.content)
         st.title('Personal features for this client')
@@ -94,6 +96,7 @@ def main():
         
         # We are getting the table made to compare the client with the 2 groups of customers
         PERS_FEAT_API_URL = "https://projet7-api-0c8f5c7ce811.herokuapp.com/valeur_moyenne/"
+        # PERS_FEAT_API_URL = "http://127.0.0.1:5000/valeur_moyenne/"
         response2 = requests.get(PERS_FEAT_API_URL, params = dictio_pred)
         data = response2.json()
         data_json_str = json.dumps(data)  # Convert the dictionary to a JSON string
