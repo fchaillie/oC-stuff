@@ -41,7 +41,7 @@ def main():
     
     AMT_ANNUITY = st.number_input('Loan annuity', min_value = 0., step = 1.)
     
-    ANNUITY_INCOME_PERC = st.number_input('What percentage of the yearly salary does the annuity represents ? [1-100]',
+    ANNUITY_INCOME_PERC = st.number_input('What percentage of the monthly salary does the annuity represents ? [1-100]',
                                          min_value = 0., max_value = 100., step = 1.) / 100
     
     INSTAL_DBD_MEAN = st.number_input(f'How many days before the due date for each instalment on average does '
