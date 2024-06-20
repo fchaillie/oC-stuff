@@ -1,6 +1,9 @@
 Welcome to the Readme section !
 
-All the files present in this repository were used to create a dashboard on Heroku.
+Summary: The files in this branch are linked to a project where I put a model on the cloud through the site Heroku using an API.  
+The model predicts the likelyhood that a new client could reimburse a loan given the information on the loan request entered in the dashboard made by Streamlit.
+
+All the files in this repository were used only to create the dashboard on Heroku with Streamlit.
 The main file for the appearance of the dashboard is "dashboard.py". 
 The file "Procfile" informs Heroku that it is with Streamlit that the dashboard will be launched.
 The file "requirement.txt" lists the packages to install to make this dashboard.
