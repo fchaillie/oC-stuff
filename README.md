@@ -1,7 +1,9 @@
-Tous les fichiers présents dans ce repository servent à créer le dashboard sur Heroku.
-Le fichier principal pour l'apparence du dashboard est "dashboard.py".
-Le fichier "Procfile" informe Heroku que c'est avec Streamlit que l'on va lancer le dashboard.
-Le fichier "requirement.txt" liste liste les packages à installer qui sont nécessaires pour faire ce dashboard.
-Le fichier "runtime.text" liste la version de Python utilisée.
-Le dossier "tests" contient les test mis en place qui sont executés quand je pousse un fichier sur cette branche (Github Actions)
-Les dossiers "Pipfile", "Pipfile.lock", "setup.sh" et le dossier "src" configure le dashboard par rapport à mon système.
+Welcome to the Readme section !
+
+All the files present in this repository were used to create a dashboard on Heroku.
+The main file for the appearance of the dashboard is "dashboard.py". 
+The file "Procfile" informs Heroku that it is with Streamlit that the dashboard will be launched.
+The file "requirement.txt" lists the packages to install to make this dashboard.
+The file "runtime.text" gives the Python version used.
+The file "tests" has the tests that will be executed every time I push a file on this branch (Github Actions).
+The files "Pipfile", "Pipfile.lock", "setup.sh" and the folder "src" configurate the dashboard according to my system settings.
