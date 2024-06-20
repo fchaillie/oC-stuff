@@ -1,6 +1,6 @@
 Welcome to the Readme section !
 
-Summary: The 4 Jupyter notebooks in this branch are linked to a project where I put a model on the cloud through the site Heroku using an API.  
+Summary: The 4 Jupyter notebooks in this "main" branch of the "oC-stuff" repository are linked to a project where I put a model on the cloud through the site Heroku using an API.  
 The model predicts the likelyhood that a new client could reimburse a loan given the information on the loan request.
 
 Notebook "Business metrics":
