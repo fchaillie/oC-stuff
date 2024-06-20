@@ -1,9 +1,9 @@
 Welcome to the Readme section !
 
-Summary: The 4 Jupyter notebooks in this "main" branch of the "oC-stuff" repository are linked to a project where I put a model on the cloud through the site Heroku using an API. The model predicts the likelyhood that a new client could reimburse a loan given the information on the loan request. The client information is entered in a dashboard that interacts with an API on Heroku.
+Summary: The 4 notebooks in this "main" branch of the "oC-stuff" repository are linked to a project I did where I put a model on the cloud through the site Heroku using an API. The model predicts the likelyhood that a new client could reimburse a loan given the information on the loan request. The client information is entered in a dashboard (made with Streamlit) that interacts with an API that are both on Heroku.
 
 Notebook "Business metrics":
-Here I build a confusion matrix for a threshold that I use to determine whether the loan is granted or not. Then next, I look for the best threshold that will optimize the profit of the company with an algorithm.
+Here I build a confusion matrix to find the most profitable threshold to be used to determine whether a loan is granted or not to a new client. If the probability of reimbursement for a client is  according the probability. Then next, I look for the best threshold that will optimize the profit of the company with an algorithm.
 
 Notebook "Data drift":
 Here I analyze the data drift between the train and test data to see if there is a fundamental change in the data, using the library Evidently.
