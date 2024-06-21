@@ -1,7 +1,6 @@
-Welcome to the Readme section !
-
 Summary: The 4 notebooks in this "main" branch of the "oC-stuff" repository are linked to a project I did where I put a model on the cloud through the site Heroku using an API. The model predicts the likelyhood that a new client could not reimburse a loan given the information on the loan request. The client information is entered in a dashboard (made with Streamlit) that interacts with an API that are both on Heroku. Those 4 notebooks here are not related with the building of the dashboard or the API. They are related to the data used for the model and the model used for the default prediction of new clients.
 
+Details
 Notebook "Business metrics":
 Here I build a confusion matrix to find the most profitable threshold to be used by the company to determine whether a loan is granted or not to a new client. If the probability of default given by the model for a client is higher than the threshold then the loan is not granted.
 
