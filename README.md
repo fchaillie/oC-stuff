@@ -3,7 +3,7 @@ Summary:
 The files in this branch are linked to a project I did where I put a model on the cloud through the site Heroku using an API.  
 The model predicts the likelyhood that a new client could not reimburse a loan given the information on the loan request. The client information entered in the dashboard made by Streamlit.
 
-Deatails:
+Details:
 
 All the files in this repository were used only to create the dashboard on Heroku with Streamlit.
 The main file for the appearance of the dashboard is "dashboard.py". 
