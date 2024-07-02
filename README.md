@@ -1,8 +1,8 @@
 Loan_Project_Dashboard Repository Summary:
 
-This is a project for a loan company that needs to predict the likelyhood that new clients will not reimburse their loan given the information on their loan request. The client information is entered in a dashboard and interacts with an API before returning an answer saying if the loan request is accepted or not. The files in this "main" branch are for the dashboard made with Streamlit on Heroku. The files in the "Models_and_data" branch are related to the models used and the data used for the final model put on the cloud.
+This is a project for a loan company that needs to predict the likelyhood that new clients will not reimburse their loan given the information on their loan request. The client information is entered in a dashboard and interacts with an API before returning an answer saying if the loan request is accepted or not. The files in this "Loan_Project_Dashboard" branch are for the dashboard made with Streamlit on Heroku. The files in the "Loan_Project_Models_and_data" branch are related to the models used and the data used for the final model put on the cloud.
 
-Details of the files in this "main" branch:
+Details of the files in this "Loan_Project_Dashboard" branch:
 
 The main file for the appearance of the dashboard is "dashboard.py". 
 The file "Procfile" informs Heroku that it is with Streamlit that the dashboard will be launched.
