@@ -1,11 +1,9 @@
-Summary:
+Loan_Project_Dashboard Repository Summary:
 
-The files in this branch are linked to a project I did where I put a model on the cloud through the site Heroku using an API.  
-The model predicts the likelyhood that a new client could not reimburse a loan given the information on the loan request. The client information entered in the dashboard made by Streamlit.
+This is a project for a loan company that needs to predict the likelyhood that new clients will not reimburse their loan given the information on their loan request. The client information is entered in a dashboard and interacts with an API before returning an answer saying if the loan request is accepted or not. The files in this "main" branch are for the dashboard made with Streamlit on Heroku. The files in the "Models_and_data" branch are related to the models used and the data used for the final model put on the cloud.
 
-Details:
+Details of the files in this repository:
 
-All the files in this repository were used only to create the dashboard on Heroku with Streamlit.
 The main file for the appearance of the dashboard is "dashboard.py". 
 The file "Procfile" informs Heroku that it is with Streamlit that the dashboard will be launched.
 The file "requirement.txt" lists the packages to install to make this dashboard.
