@@ -1,6 +1,6 @@
 Summary: 
 
-The 4 notebooks in this "Loan_Project_Models_and_Data" branch are not related with the building of the dashboard or the API. They are related to the data used for the model and the model used for the default prediction of new clients.
+The 4 notebooks in this "Loan_Project_Models_and_Data" branch are not related with the building of the dashboard/API of the model. They are related to the data used for the model and the model used for the default prediction of new clients.
 
 Details:
 
