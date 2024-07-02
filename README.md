@@ -1,6 +1,6 @@
 Summary: 
 
-The 4 notebooks in this "main" branch of the "oC-stuff" repository are linked to a project I did where I put a model on the cloud through the site Heroku using an API. The model predicts the likelyhood that a new client could not reimburse a loan given the information on the loan request. The client information is entered in a dashboard (made with Streamlit) that interacts with an API that are both on Heroku. Those 4 notebooks here are not related with the building of the dashboard or the API. They are related to the data used for the model and the model used for the default prediction of new clients.
+The 4 notebooks in this "Models_and_data" branch are not related with the building of the dashboard or the API. They are related to the data used for the model and the model used for the default prediction of new clients.
 
 Details:
 
